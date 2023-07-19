@@ -1,29 +1,30 @@
 # deeper-lodash
 
-## 概述：
+## Overview:
 
-递归处理数据，有时我们需要递归地从对象或者数组中处理某些数据。  
-`deeper-lodash` 解决了这个问题并仅使用 `lodash` 作为外部依赖项。
-`deeper-lodash` 使用了 `Vite` 作为打包构建工具。而最终构建的浏览器兼容目标，使用的是`Vite` 特有的值：`modules`，这是指支持原生 ES 模块、原生 ESM 动态导入 和 import.meta 的浏览器。`Vite` 将替换 `modules` 为 `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
+Recursively process data, sometimes we need to recursively process some data from objects or arrays.  
+Review: [中文文档](docs/README.zh.md) | English Document   
+`deeper-lodash` solves this problem and only uses `lodash` as an external dependency.
+`deeper-lodash` uses `Vite` as the packaging and building tool. The final browser compatibility target is built using `Vite`'s unique value: `modules`, which refers to browsers that support native ES modules, native ESM dynamic imports and import.meta. `Vite` will replace `modules` with `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
 
-## 特征：
+## Features:
 
-- 支持 ESM、CommonJS、CDN 三种导入方式
-- 递归匹配 value 从数据中排除
-- 递归匹配 key 从数据中排除
-- 递归的将数据中的空值排除
+- Supports ESM, CommonJS, CDN three ways of importing
+- Recursively match value to exclude from data
+- Recursively match key to exclude from data
+- Recursively exclude empty values from data
 
-## 使用：
+## Usage:
 
-### nodejs 项目中使用：
+### Use in nodejs project:
 
-- 安装：
+- Installation:
 
 ```sh
 npm install deeper-lodash
 ```
 
-- ES6 Module：
+- ES6 Module:
 
 ```ts
 import { deepOmitNil } from 'deeper-lodash';
@@ -33,15 +34,15 @@ deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
 - CommonJS:
 
 ```ts
-// 递归过滤空值
+// Recursively filter out empty values
 const { deepOmitNil } = require('deeper-lodash');
 deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
 ```
 
-### CDN 方式使用：
+### Use with CDN:
 
-- CDN 方式中所有成员变量都可以在`_DL`命名空间下被使用。
-- 但 lodash 作为本项目的外部依赖库，所以在使用此方式导入时，lodash 不能像在 nodejs 项目中那样读取依赖并自动安装至项目，所以你还需要手动引入 lodash 确保并确保命名空间：`_` 存在且是正常工作的。
+- In CDN mode, all member variables can be used under the `_DL` namespace.
+- But lodash as an external dependency library of this project, so when using this way of importing, lodash cannot be read and automatically installed to the project as in nodejs project, so you also need to manually import lodash and ensure that the namespace: `_` exists and works normally.
 
 ```html
 <!DOCTYPE html>
@@ -70,13 +71,13 @@ deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
 ### deepOmitNil:
 
 - summary:  
-  递归过滤空值
+  Recursively filter out empty values
 - params:
 
   - `data`:
     - type: `Array | PlainObject`
     - summary:  
-      数组或普通对象，即由对象构造函数创建的对象还是具有原型为空的对象。
+      Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
 
   ```ts
   import { deepOmitNil } from 'deeper-lodash';
@@ -107,17 +108,17 @@ deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
 ### deepOmitByValues
 
 - summary:  
-  递归匹配 value 过滤
+  Recursively match value filtering
 - params:
 
   - `data`:
     - type: `Array | PlainObject`
     - summary:  
-      数组或普通对象，即由对象构造函数创建的对象还是具有原型为空的对象。
+      Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
   - `props`:
     - type: `(string | number | boolean | undefined | null)[]`
     - summary:  
-      需要过滤的值
+      Values to be filtered
 
   ```ts
   import { deepOmitByValues } from 'deeper-lodash';
@@ -157,17 +158,17 @@ deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
 ### deepOmitByKeys
 
 - summary:  
-  递归匹配 key 过滤
+  Recursively match key filtering
 - params:
 
   - `data`:
     - type: `Array | PlainObject`
     - summary:  
-      数组或普通对象，即由对象构造函数创建的对象还是具有原型为空的对象。
+      Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
   - `props`:
     - type: `string[]`
     - summary:  
-      需要过滤的值
+      Values to be filtered
 
   ```ts
   import { deepOmitByKeys } from 'deeper-lodash';
