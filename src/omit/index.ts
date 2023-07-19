@@ -7,7 +7,7 @@ import { OmitFnDataType } from './types';
  * @param keys
  * @returns
  */
-export const deepOmit = (data: OmitFnDataType, ...keys) => {
+export const deepOmit = (data: OmitFnDataType, ...keys: string[]) => {
   if (!isArray(data) && !isPlainObject(data)) return data;
   let finalData: object = cloneDeep(data);
   if (isPlainObject(finalData)) {
