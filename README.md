@@ -15,7 +15,7 @@
 
 ## 使用：
 
-### `nodejs`项目中使用：
+### nodejs 项目中使用：
 
 - 安装：
 
@@ -30,7 +30,7 @@ import { deepOmitNil } from 'deeper-lodash';
 deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
 ```
 
-- CommonJS
+- CommonJS:
 
 ```ts
 // 递归过滤空值
@@ -40,7 +40,8 @@ deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
 
 ### CDN 方式使用：
 
-- CDN 方式中所有成员变量都可以在`DeeperLodash`命名空间下被使用
+- CDN 方式中所有成员变量都可以在`_DL`命名空间下被使用。
+- 但 lodash 作为本项目的外部依赖库，所以在使用此方式导入时，lodash 不能像在 nodejs 项目中那样读取依赖并自动安装至项目，所以你还需要手动引入 lodash 确保并确保命名空间：`_` 存在且是正常工作的。
 
 ```html
 <!DOCTYPE html>
@@ -51,9 +52,10 @@ deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
     <title>Document</title>
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/deeper-lodash/dist/index.min.js"></script>
     <script>
-      DeeperLodash.deepOmitNil({
+      _DL.deepOmitNil({
         name: 'loclink',
         age: 18,
         aaa: undefined,
