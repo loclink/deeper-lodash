@@ -5,7 +5,7 @@ export default defineConfig({
     lib: {
       entry: './src/index.ts',
       name: 'DeeperLodash',
-      fileName: 'index'
+      fileName: (format) => `index.${format === 'umd' ? 'min.js' : 'js'}`
     },
     rollupOptions: {
       // 排除 lodash
