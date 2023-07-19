@@ -7,7 +7,7 @@ import { OmitFnDataType } from './types';
  * @param keys
  * @returns
  */
-export const deepOmit = (data: OmitFnDataType, ...keys: string[]) => {
+export const deepOmitByKeys = (data: OmitFnDataType, ...keys: string[]) => {
   if (!isArray(data) && !isPlainObject(data)) return data;
   let finalData: object = cloneDeep(data);
   if (isPlainObject(finalData)) {
@@ -15,7 +15,7 @@ export const deepOmit = (data: OmitFnDataType, ...keys: string[]) => {
   }
   forEach(finalData, (value, key) => {
     if (isArray(value) || isPlainObject(value)) {
-      finalData[key] = deepOmit(value, ...keys);
+      finalData[key] = deepOmitByKeys(value, ...keys);
     }
   });
 
@@ -28,7 +28,7 @@ export const deepOmit = (data: OmitFnDataType, ...keys: string[]) => {
  * @param props
  * @returns
  */
-export const deepOmitBy = (data: OmitFnDataType, ...props: (string | number | boolean | undefined | null)[]) => {
+export const deepOmitByValues = (data: OmitFnDataType, ...props: (string | number | boolean | undefined | null)[]) => {
   if (!isArray(data) && !isPlainObject(data)) return data;
   let finalData: object = cloneDeep(data);
   if (isArray(finalData)) {
@@ -39,7 +39,7 @@ export const deepOmitBy = (data: OmitFnDataType, ...props: (string | number | bo
 
   forEach(finalData, (value, key) => {
     if (isArray(value) || isPlainObject(value)) {
-      finalData[key] = deepOmitBy(value, ...props);
+      finalData[key] = deepOmitByValues(value, ...props);
     }
   });
 
@@ -52,5 +52,5 @@ export const deepOmitBy = (data: OmitFnDataType, ...props: (string | number | bo
  * @returns
  */
 export const deepOmitNil = (data: OmitFnDataType) => {
-  return deepOmitBy(data, undefined, null, NaN);
+  return deepOmitByValues(data, undefined, null, NaN);
 };
