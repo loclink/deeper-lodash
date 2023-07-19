@@ -1,7 +1,6 @@
 {
   "name": "deeper-lodash",
   "version": "0.0.3",
-  "type": "module",
   "license": "MIT",
   "author": "loclink",
   "description": "递归处理数据",
