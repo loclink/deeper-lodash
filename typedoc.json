@@ -1,6 +1,7 @@
 {
   "entryPoints": ["src/index.ts"],
-  "plugin": ["typedoc-plugin-markdown"],
-  "out": "./docs/api",
+  "plugin": ["sonicware-tdt"],
+  "theme": "sonicware",
+  "out": "./docs",
   "readme": "none"
 }

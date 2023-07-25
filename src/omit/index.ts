@@ -3,8 +3,6 @@ import { OmitFnDataType } from './types';
 export * from './types';
 /**
  * Recursively match key filtering
- * @module c
- * @category Omit
  * @param data - Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
  * @param keys - Keys to be filtered
  * @returns
@@ -26,8 +24,6 @@ export const deepOmitByKeys = (data: OmitFnDataType, keys: string[]) => {
 
 /**
  * Recursively match value filtering
- * @module b
- * @category Omit
  * @param data - Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
  * @param props - Values to be filtered
  * @returns
@@ -52,12 +48,9 @@ export const deepOmitByValues = (data: OmitFnDataType, props: (string | number |
 
 /**
  * Recursively filter out empty values
- * @module a
- * @category Omit
  * @param data - Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
- * @returns 
- * @example 
- ```ts
+ * @example
+ * ```typescript
   import { deepOmitNil } from 'deeper-lodash';
   deepOmitNil({
     name: 'loclink',
@@ -82,6 +75,8 @@ export const deepOmitByValues = (data: OmitFnDataType, props: (string | number |
   //     ]
   //   }
  ```
+ * @returns
+ *
  */
 export const deepOmitNil = (data: OmitFnDataType) => {
   return deepOmitByValues(data, [undefined, null, NaN]);
