@@ -3,7 +3,7 @@
 ## Overview:
 
 Recursively process data, sometimes we need to recursively process some data from objects or arrays.  
-Review: [中文文档](docs/README.zh.md) | English Document   
+Review: [中文文档](/readme/README.zh.md) | English Document  
 `deeper-lodash` solves this problem and only uses `lodash` as an external dependency.
 `deeper-lodash` uses `Vite` as the packaging and building tool. The final browser compatibility target is built using `Vite`'s unique value: `modules`, which refers to browsers that support native ES modules, native ESM dynamic imports and import.meta. `Vite` will replace `modules` with `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
 
@@ -168,7 +168,7 @@ deepOmitNil({ name: 'loclink', age: 18, aaa: undefined, bbb: null, ccc: NaN });
   - `props`:
     - type: `string[]`
     - summary:  
-      Values to be filtered
+      Keys to be filtered
 
   ```ts
   import { deepOmitByKeys } from 'deeper-lodash';

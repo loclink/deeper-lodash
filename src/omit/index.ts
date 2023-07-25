@@ -1,10 +1,12 @@
 import { isArray, isPlainObject, forEach, omitBy, filter, cloneDeep, includes, omit } from 'lodash';
 import { OmitFnDataType } from './types';
-
+export * from './types';
 /**
- * 根据key深度递归从对象中排除
- * @param data
- * @param keys
+ * Recursively match key filtering
+ * @module c
+ * @category Omit
+ * @param data - Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
+ * @param keys - Keys to be filtered
  * @returns
  */
 export const deepOmitByKeys = (data: OmitFnDataType, keys: string[]) => {
@@ -23,9 +25,11 @@ export const deepOmitByKeys = (data: OmitFnDataType, keys: string[]) => {
 };
 
 /**
- * 根据value深度递归从数组或对象中排除匹配值
- * @param data
- * @param props
+ * Recursively match value filtering
+ * @module b
+ * @category Omit
+ * @param data - Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
+ * @param props - Values to be filtered
  * @returns
  */
 export const deepOmitByValues = (data: OmitFnDataType, props: (string | number | boolean | undefined | null)[]) => {
@@ -47,9 +51,37 @@ export const deepOmitByValues = (data: OmitFnDataType, props: (string | number |
 };
 
 /**
- * 从数组或对象深度递归排除空值，如 null 和 undefined 以及 NaN
- * @param data
- * @returns
+ * Recursively filter out empty values
+ * @module a
+ * @category Omit
+ * @param data - Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
+ * @returns 
+ * @example 
+ ```ts
+  import { deepOmitNil } from 'deeper-lodash';
+  deepOmitNil({
+    name: 'loclink',
+    age: 18,
+    aaa: undefined,
+    bbb: null,
+    ccc: NaN,
+    ddd: [
+      undefined,
+      {
+        name: 'qwe'
+      }
+    ]
+  });
+  // => {
+  //     "name": "loclink",
+  //     "age": 18,
+  //     "ddd": [
+  //         {
+  //             "name": "qwe"
+  //         }
+  //     ]
+  //   }
+ ```
  */
 export const deepOmitNil = (data: OmitFnDataType) => {
   return deepOmitByValues(data, [undefined, null, NaN]);
