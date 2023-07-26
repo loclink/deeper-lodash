@@ -20,11 +20,8 @@
     "release": "dotenv release-it",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "dev": "vite",
-    "doc": "typedoc",
-    "docs:dev": "typedoc && vitepress dev docs",
-    "docs:build": "npm run publish-typedoc && vitepress build docs",
-    "preview:doc": "vite docs"
+    "docs:dev": "vite docs",
+    "docs:build": "typedoc"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.1.1",
