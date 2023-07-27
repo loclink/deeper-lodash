@@ -1,2 +1,4 @@
-export * as omit from './omit';
-export * as transform from './transform';
+export * from './omit';
+export * from './transform';
+export * from './testClass';
+export * from './testEnum'
