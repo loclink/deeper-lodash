@@ -3,6 +3,7 @@ import { OmitFnDataType } from './types';
 export * from './types';
 /**
  * Recursively match key filtering
+ * @group Omit
  * @param data - Array or plain object, i.e., an object created by the object constructor or an object with a prototype of null.
  * @param keys - Keys to be filtered
  * @returns
